@@ -1,21 +1,24 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.UUID;
+import org.springframework.data.annotation.Id;
 
 public class Person {
-    private final UUID id;
+    @Id
+    private String id;
 
-    private final String name;
+    private String name;
 
-    public Person(@JsonProperty("id") UUID id,
+    @JsonCreator
+    public Person(@JsonProperty("id") String id,
                   @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
     }
 
-    public UUID getId() {
+
+    public String getId() {
         return id;
     }
 
